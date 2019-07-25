@@ -13,6 +13,7 @@ export class AgencieService {
 
   public url: string;
 
+  // tslint:disable-next-line:variable-name
   constructor(private _http: Http) {
     this.url = environment.baseUrl;
   }
@@ -22,7 +23,7 @@ export class AgencieService {
       'Content-Type': 'application/json'
     });
     const agencie = formGroup.value;
-    const options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers });
     const urlAPI = this.url + 'MLA/payment_methods/rapipago/agencies?'
                           + '&lat=' + agencie.latitud + '&lon=' + agencie.longitud + '&radius=' + agencie.radio
                           + '&limit=' + agencie.limit + '&offset=' + agencie.offset + '&orderby=' + agencie.orderby
@@ -34,7 +35,7 @@ export class AgencieService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    const options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers });
     return this._http.get(this.url + 'agencies-recomended', options).pipe(map(res => res.json()));
   }
 
@@ -42,7 +43,7 @@ export class AgencieService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    const options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers });
     return this._http.get(this.url + 'agencies/' + id, options).pipe(map(res => res.json()));
   }
 
@@ -50,7 +51,7 @@ export class AgencieService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    const options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers });
     return this._http.post(this.url + 'agencies', agencie, options).pipe(map(res => res.json()));
   }
 
@@ -58,7 +59,7 @@ export class AgencieService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    const options = new RequestOptions({ headers: headers });
+    const options = new RequestOptions({ headers });
     return this._http.delete(this.url + 'agencies/' + id, options).pipe(map(res => res.json()));
   }
 

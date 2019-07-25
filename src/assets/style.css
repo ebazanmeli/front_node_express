@@ -1,12 +1,30 @@
+body {
+  background-color: #ffffff;
+}
+
 .container-search {
-    padding: 5% 0px 5% 0;
-    text-align: center;
-    background: #fff8d6dd;
-    width: 100%;
+  padding: 2% 0px 3% 0;
+  text-align: center;
+  background: #fff8d6dd;
+  width: 100%;
+}
+
+.title-agency {
+  text-transform: uppercase;
+}
+
+.paragraph-agency {
+  text-transform: uppercase;
+  height: 40%;
 }
 
 .container-search form {
-    margin-left: 15%;
+  margin: 2% 0% 2% 25%;
+  width: 50%;
+}
+
+.container-search .row {
+  text-align: center;
 }
 
 .pdr-5 {

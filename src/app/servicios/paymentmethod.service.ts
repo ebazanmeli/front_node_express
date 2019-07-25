@@ -8,19 +8,20 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class PaymentMethodService {
-  
+
   public url: string;
-  
+
+  // tslint:disable-next-line:variable-name
   constructor(private _http: Http) {
     this.url = environment.baseUrl;
   }
 
   getPaymentMethods(site: string) {
-    let headers = new Headers({ 
+    const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    let options = new RequestOptions({ headers: headers });
-        return this._http.get(this.url + 'sites/' + site + '/payment_methods', options).pipe(map(res => res.json()));
+    const options = new RequestOptions({ headers });
+    return this._http.get(this.url + 'sites/' + site + '/payment_methods', options).pipe(map(res => res.json()));
   }
 
 }
