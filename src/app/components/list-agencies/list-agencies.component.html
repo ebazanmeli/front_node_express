@@ -1,0 +1,82 @@
+<div class="container-search">
+    <form [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-md-1">
+                <label for="exampleFormControlSelect1">Site</label>
+                <select formControlName="site" name="site" [(ngModel)]='site' class="form-control" (ngModelChange)="getPaymentMethods($event)">
+                            <option value="0" selected disabled>Seleccionar site</option>
+                            <option [value]="site.id" *ngFor="let site of sites">{{site.name}}</option>
+                        </select>
+            </div>
+            <div class="col-md-1">
+                <label for="paymentmethod">Payment</label>
+                <select class="form-control" formControlName="paymentmethod" name="paymentmethod" [(ngModel)]='paymentmethod'>
+                            <option value="0" selected disabled>Seleccionar método de pago</option>
+                            <option [value]="paymentmethod.id" *ngFor="let paymentmethod of paymentmethods">{{paymentmethod.name}}</option>
+                        </select>
+            </div>
+            <div class="col-md-1">
+                <label for="latitud">Latitud</label>
+                <input formControlName="latitud" type="number" class="form-control" name="latitud" [(ngModel)]="latitud">
+            </div>
+            <div class="col-md-1">
+                <label for="longitud">Longitud</label>
+                <input formControlName="longitud" type="number" class="form-control" name="longitud" [(ngModel)]="longitud">
+            </div>
+            <div class="col-md-1">
+                <label for="radio">Radio</label>
+                <input formControlName="radio" type="number" class="form-control" name="radio" [(ngModel)]="radio">
+            </div>
+            <div class="col-md-1">
+                <label for="limit">Límite</label>
+                <input type="number" formControlName="limit" class="form-control" name="limit" [(ngModel)]="limit">
+            </div>
+            <div class="col-md-1">
+                <label for="offset">OffSet</label>
+                <input type="number" formControlName="offset" class="form-control" name="offset" [(ngModel)]="offset">
+            </div>
+            <div class="col-md-1">
+                <label for="orderby">Order by</label>
+                <select class="form-control" formControlName="orderby" name="orderby" [(ngModel)]='orderby'>
+                    <option value="address_line">dirección</option>
+                    <option value="agency_code">código agencia</option>
+                    <option value="distance">distancia</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label for="criterio">Criterio</label>
+                <select class="form-control" formControlName="criterio" name="criterio" [(ngModel)]='criterio'>
+                    <option value="ASC" selected>ASC</option>
+                    <option value="DESC">DESC</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary" (click)="getAgencies()">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <br><a [routerLink]="['/list-agencies-recomended.html']">Ver lista de agencias recomendadas</a>
+</div>
+
+<div class="row container-cards">
+    <div class="pdr-5" *ngFor="let agencie of agencies">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title tac">{{agencie.description}}</h5><br>
+                <h6 class="card-subtitle mb-2 text-muted tac">Ciudad: {{agencie.address.city}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted tac">Código Agencia: {{agencie.agency_code}}</h6>
+                <p class="card-text tac">
+                    Dirección: {{agencie.address.address_line}} <br> Estado: {{agencie.address.state}} <br> País: {{agencie.address.country}}
+                </p>
+                <div class="row col-md-12 tac">
+                    <div class="col-md-6">
+                        <a href="#" title="Añadir agencia" (click)="saveAgencie(agencie.id)"><img src="../../../assets/img/thumbs-up.png" /></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#" title="Quitar agencia" (click)="removeAgencie(agencie.id)"><img src="../../../assets/img/thumb-down.png" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

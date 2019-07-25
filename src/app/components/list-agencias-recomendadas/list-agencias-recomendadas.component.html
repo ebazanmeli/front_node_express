@@ -1,0 +1,29 @@
+<div class="container-search">
+    <h1>Lista de Agencias Recomendadas</h1>
+    <br><a [routerLink]="['/']">Volver</a>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="row">Cod Agencia</th>
+            <th scope="col">Agencia</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Estado</th>
+            <th scope="col">País</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let agencie of agencies">
+            <th scope="row">{{agencie.code}}</th>
+            <td>{{agencie.description}}</td>
+            <td>{{agencie.city}}</td>
+            <td>{{agencie.address_line}}</td>
+            <td>{{agencie.state}}</td>
+            <td>{{agencie.country}}</td>
+            <td><a class="card-link btn btn-danger" (click)="removeAgencie(agencie.id)">UNLIKE</a></td>
+        </tr>
+    </tbody>
+</table>
