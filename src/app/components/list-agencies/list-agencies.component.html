@@ -2,14 +2,15 @@
 <div class="container-search">
     <form [formGroup]="formGroup">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12"><h1>Buscador de Agencias</h1></div>
+            <div class="col-md-6 mt-2">
                 <label for='site'>Site</label>
                 <select formControlName="site" name="site" [(ngModel)]='site' class="form-control" (ngModelChange)="getPaymentMethods($event)">
                             <option value="0" selected disabled>Seleccionar site</option>
                             <option [value]="site.id" *ngFor="let site of sites">{{site.name}}</option>
                         </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
                 <label for="paymentmethod">Payment</label>
                 <select class="form-control" formControlName="paymentmethod" name="paymentmethod" [(ngModel)]='paymentmethod'>
                             <option value="0" selected disabled>Seleccionar método de pago</option>
