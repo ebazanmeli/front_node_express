@@ -24,7 +24,7 @@ export class AgencieService {
     });
     const agencie = formGroup.value;
     const options = new RequestOptions({ headers });
-    const urlAPI = this.url + 'MLA/payment_methods/rapipago/agencies?'
+    const urlAPI = this.url + agencie.site + '/payment_methods/' + agencie.paymentmethod + '/agencies?'
                           + '&lat=' + agencie.latitud + '&lon=' + agencie.longitud + '&radius=' + agencie.radio
                           + '&limit=' + agencie.limit + '&offset=' + agencie.offset + '&orderby=' + agencie.orderby
                           + '&criterio=' + agencie.criterio;
